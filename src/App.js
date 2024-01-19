@@ -4,8 +4,8 @@ import Values from "values.js";
 
 function App() {
   const [data, setData] = useState({
-    color: "#1194ec",
-    amount: 9,
+    color: "",
+    amount: 0,
   });
 
   const [colors, setColors] = useState([]); // array contenente le tonalità del colore scelto
@@ -26,14 +26,14 @@ function App() {
       setColors(baseColor.all(Math.round(100 / parseInt(data.amount, 10)) * 2));
     }
     setIsLoading(false);
-    console.log(data.color, " => ", colors);
+    // console.log(data.color, " => ", colors);
   };
 
   useEffect(() => {
     setIsLoading(true);
-
-    const baseColor = new Values(`${data.color}`);
-    setColors(baseColor.all(Math.round(100 / parseInt(data.amount, 10)) * 2));
+    const baseColor = new Values("#1194ec");
+    setColors(baseColor.all(Math.round(100 / parseInt(9, 10)) * 2));
+    setData({ color: "#1194ec", amount: 9 });
 
     setIsLoading(false);
   }, []);
